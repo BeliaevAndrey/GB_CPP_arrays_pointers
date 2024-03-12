@@ -17,18 +17,19 @@ int main()
     void heapSort(float[], int);
 
     int arraySize = 15;
-    float array[] = {
-        1.2, 2.3, 1.11, 3.4, 5.5,
-        5.4, 5.3, 5.1, 1.5, 1.25,
-        5.41, 5.31, 5.11, 1.51, 1.251};
 
-    // float array[arraySize];
-    // cout << "Input array elements:" << endl;
-    // for (int i = 0; i < arraySize; i++)
-    // {
-    //     cout << "element #" << i << ": ";
-    //     cin >> array[i];
-    // }
+    // float array[] = {        /* sample data */
+    //     1.2, 2.3, 1.11, 3.4, 5.5,
+    //     5.4, 5.3, 5.1, 1.5, 1.25,
+    //     5.41, 5.31, 5.11, 1.51, 1.251};
+
+    float array[arraySize];
+    cout << "Input array elements:" << endl;
+    for (int i = 0; i < arraySize; i++)
+    {
+        cout << "element #" << i << ": ";
+        cin >> array[i];
+    }
 
     cout << "Source array: " << endl;
     printArray(array, arraySize);
