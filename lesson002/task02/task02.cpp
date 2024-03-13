@@ -23,5 +23,7 @@ int main()
     for (int i = 0; i < items.size(); i++)
         total += prices[items[i]];
 
-        printf("Total cost is: %.2f.\n", total);
+    printf("Total cost is: %.2f.\n", total);
+
+    return 0;
 }
