@@ -24,48 +24,66 @@ using namespace std;
 
 int main()
 {
+    bool winner = false;
     void printBoard(char[][3]);
     bool checkWin(char[][3], char);
     void move(char[][3], char);
-    char mark = 'X';
+    char mark = '0';
+    int countMoves = 0;
 
     char board[3][3] = {
         {' ', ' ', ' '},
         {' ', ' ', ' '},
         {' ', ' ', ' '}};
 
+    printBoard(board);
+
     do
     {
-        printBoard(board);
-        move(board, mark);
-        printBoard(board);
         mark = mark == 'X' ? '0' : 'X';
-    } while (!checkWin(board, mark));
+        move(board, mark);
+        countMoves++;
+        printBoard(board);
+        winner = checkWin(board, mark);
 
-    cout << mark << " WINS!" << endl;
+    } while (!winner && countMoves < 9);
+
+    if (winner)
+        cout << mark << " WINS!" << endl;
+    else
+        cout << "Draw!" << endl;
 
     return 0;
 }
 
 void move(char board[][3], char mark)
 {
-    int row = 0, col = 0;
-    cout << "Enter the coordinates (row col; 1 - 3): ";
-    while (row > 3 || row < 1)
+    bool flag = false;
+    do
     {
-        cin >> row;
-        if (row > 3 || row < 1)
-            cout << "invalid value, try again, please" << endl;
-    }
+        int row = 0, col = 0;
+        cout << "Enter the coordinates (row col; 1 - 3): ";
+        while (row > 3 || row < 1)
+        {
+            cin >> row;
+            if (row > 3 || row < 1)
+                cout << "invalid value, try again, please" << endl;
+        }
 
-    while (col > 3 || col < 1)
-    {
-        cin >> col;
-        if (col > 3 || col < 1)
-            cout << "invalid value, try again, please" << endl;
-    }
-
-    board[row - 1][col - 1] = mark;
+        while (col > 3 || col < 1)
+        {
+            cin >> col;
+            if (col > 3 || col < 1)
+                cout << "invalid value, try again, please" << endl;
+        }
+        if (board[row - 1][col - 1] == ' ')
+        {
+            board[row - 1][col - 1] = mark;
+            flag = true;
+        }
+        else
+            cout << "Position occupied, once again, please" << endl;
+    } while (!flag);
 }
 
 bool checkWin(char board[][3], char mark)
