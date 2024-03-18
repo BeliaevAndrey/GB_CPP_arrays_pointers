@@ -10,8 +10,11 @@ int main()
 {
     void countEvens(long long, int &);
     int ans = 0;
-    countEvens(9223372036854775806, ans),
-        std::cout << "ans: " << ans << std::endl;
+    countEvens(9223372036854775806, ans);
+    std::cout << "ans: " << ans << std::endl;
+    ans = 0;
+    countEvens(2222222222222222222, ans);
+    std::cout << "ans: " << ans << std::endl;
 }
 
 void countEvens(long long number, int &ans)
@@ -21,8 +24,6 @@ void countEvens(long long number, int &ans)
     if (!((number % 10) % 2))
     {
         ans++;
-        countEvens(number / 10, ans);
     }
-    else
-        countEvens(number / 10, ans);
+    countEvens(number / 10, ans);
 }
