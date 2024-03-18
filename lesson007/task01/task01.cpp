@@ -41,9 +41,7 @@ void swapvec(std::vector<int> &vec, int *arr)
 
     for (int i = 3; i >= 0; i--)
     {
-        // int tmp = *(arr + i);
         int tmp = arr[i];
-        // *(arr + i) = vec[i];
         arr[i] = vec[i];
         vec[i] = tmp;
     }
