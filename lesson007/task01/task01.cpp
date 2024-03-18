@@ -9,7 +9,7 @@
 
 int main()
 {
-    std::vector<int> swapvec(std::vector<int>, int *);
+    void swapvec(std::vector<int> &, int *);
 
     void printVec(std::vector<int>);
     void printArr(int[], int);
@@ -18,11 +18,15 @@ int main()
     int b[] = {2, 4, 6, 8};
 
     int sizeB = sizeof(b) / sizeof(b[0]);
+    std::cout << "vec: ";
     printVec(a);
+    std::cout << "arr: ";
     printArr(b, sizeB);
 
+    std::vector<int> &refA = a;
+
     std::cout << "after swap: " << std::endl;
-    a = swapvec(a, b);
+    swapvec(refA, b);
 
     std::cout << "vec: ";
     printVec(a);
@@ -32,18 +36,17 @@ int main()
     return 0;
 }
 
-std::vector<int> swapvec(std::vector<int> vec, int *arr)
+void swapvec(std::vector<int> &vec, int *arr)
 {
-    for (int i = vec.size() - 1; i >= 0; i--)
+
+    for (int i = 3; i >= 0; i--)
     {
-        int tmp = *(arr + i);
-        std::cout << "swapping: " << tmp;
-        *(arr + i) = vec[i];
-        vec.pop_back();
-        vec.push_back(tmp);
-        std::cout << " <-> " << vec[i] << std::endl;
+        // int tmp = *(arr + i);
+        int tmp = arr[i];
+        // *(arr + i) = vec[i];
+        arr[i] = vec[i];
+        vec[i] = tmp;
     }
-    return vec;
 }
 
 void printVec(std::vector<int> vec)
