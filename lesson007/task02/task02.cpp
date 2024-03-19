@@ -22,7 +22,7 @@ int и число k — максимальную длину прыжка, а в�
 
 int main()
 {
-    int countSteps(int n, int i = 3, int k = 3);
+    int countJumps(int n, int i = 3, int k = 3);
 
     int n, k;
 
@@ -31,7 +31,7 @@ int main()
     std::cout << "Input k: ";
     std::cin >> k;
 
-    std::cout << countSteps(n, k, k) << std::endl; // test 1
+    std::cout << countJumps(n, k, k) << std::endl; // test 1
 
     std::cout << std::endl
               << std::endl;
@@ -39,18 +39,21 @@ int main()
     std::cout << "Input n: ";
     std::cin >> n;
 
-    std::cout << countSteps(n) << std::endl; // test 2
+    std::cout << countJumps(n) << std::endl; // test 2
 
     return 0;
 }
 
+// n -- длина лестницы
+// k -- максимальная дляна прыжка
+// i -- текущая длина прыжка
 // Не понял как обойтись без дополнительного счетчика
-int countSteps(int n, int i = 3, int k = 3)
+int countJumps(int n, int i = 3, int k = 3)
 {
 
     if (n == 0)
         return 1;
     if (n < 0 || i < 1)
         return 0;
-    return countSteps(n - i, k, k) + countSteps(n, i - 1, k);
+    return countJumps(n - i, k, k) + countJumps(n, i - 1, k);
 }
